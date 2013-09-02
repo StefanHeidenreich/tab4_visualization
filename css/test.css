@@ -1,0 +1,31 @@
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body {
+    background: url(../img/zeit_bg.jpg) no-repeat center;
+    background-size: 1069px;
+    height: 2500px;
+    width: 100%
+}
+
+a,a:hover, a:active {
+    text-decoration: none;
+/*    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    -moz-backface-visibility:hidden;
+    -ms-backface-visibility:hidden;
+    -webkit-transform-style: preserve-3d;*/
+}
+
+
+
+.module {
+    position: absolute;
+    top: 540px;
+    width: 945px;
+    left: 50%;
+    margin-left: -469px;
+    box-sizing: border-box;    
+}
