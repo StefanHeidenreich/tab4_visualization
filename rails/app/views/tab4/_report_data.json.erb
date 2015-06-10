@@ -1,0 +1,17 @@
+<% if @cols = @cached.daily_uber_cat_cols || @cached.hourly_uber_cat_cols -%>
+<%==
+  { parsedate: highchart_time(Time.zone.now),
+    data: @cols.map_array do |hashtag,cols|
+      {
+        node: hashtag,
+        data: (@cached.daily_uber_cat || @cached.hourly_uber_cat)[hashtag].map do |row|
+                [ highchart_time(row[:t]), row[''].to_i ]
+              end,
+        subnodes: recursive_data((@cached.daily_uber_cat || @cached.hourly_uber_cat)[hashtag], cols - ['z', 'y', 't', :y, :z, :t, nil, ''], ""),
+        flags: highchart_tweets(@cached.top_tweets_uber_cat[hashtag])
+      }
+    end,
+    flags: highchart_tweets(@cached.top_tweets_uber_cat.values.map{ |tt| tt.first(3) }.flatten.uniq(&:twitter_id))
+  }.to_json
+  %>
+<% end -%>
